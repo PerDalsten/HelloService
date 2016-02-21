@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="40661415-ac80-4805-9435-c8c94e1d796a" activeEnvironment="Default" name="HelloService" resourceRoot="${projectDir}" soapui-version="5.2.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings><con:setting id="Port">8089</con:setting><con:setting id="Set endpoint for HTTP Tunnel:">http://localhost:8088</con:setting><con:setting id="HTTP tunnel - KeyStore"/><con:setting id="HTTP tunnel - Password"/><con:setting id="HTTP tunnel - KeyPassword"/><con:setting id="HTTP tunnel - TrustStore"/><con:setting id="HTTP tunnel - TrustStore Password"/><con:setting id="Reuse request state">false</con:setting><con:setting id="HTTP tunnel - Set SSL Client Key Store path"/><con:setting id="Content types to monitor">*/html, */xml, */soap+xml, */json, */x-json, */javascript, */x-amf, */http</con:setting><con:setting id="HTTP tunnel - Set SSL Client Key Store Password"/></con:settings><con:interface xsi:type="con:WsdlInterface" id="1e3b3ee4-d131-4bf4-ae3a-143153e97b9c" wsaVersion="NONE" name="HelloServiceSOAP" type="wsdl" bindingName="{http://www.purplegreen.dk/HelloService}HelloServiceSOAP" soapVersion="1_1" anonymous="optional" definition="../../main/resources/wsdl/HelloService.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/C:/Users/Per/Projects/HelloService/src/main/resources/wsdl/HelloService.wsdl"><con:part><con:url>file:/C:/Users/Per/Projects/HelloService/src/main/resources/wsdl/HelloService.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HelloService" targetNamespace="http://www.purplegreen.dk/HelloService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.purplegreen.dk/HelloService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.purplegreen.dk/HelloService">
+      <xsd:element name="Hello">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="id" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="HelloResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloRequest">
+    <wsdl:part element="tns:Hello" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="HelloResponse">
+    <wsdl:part element="tns:HelloResponse" name="parameters"/>
+  </wsdl:message>
+  <wsdl:portType name="HelloService">
+    <wsdl:operation name="Hello">
+      <wsdl:input message="tns:HelloRequest"/>
+      <wsdl:output message="tns:HelloResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HelloServiceSOAP" type="tns:HelloService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Hello">
+      <soap:operation soapAction="http://www.purplegreen.dk/HelloService/Hello"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HelloService">
+    <wsdl:port binding="tns:HelloServiceSOAP" name="HelloServiceSOAP">
+      <soap:address location="http://localhost/HelloService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8088/HelloService</con:endpoint><con:endpoint>http://localhost:8089/HelloService</con:endpoint><con:endpoint>http://localhost/HelloService</con:endpoint><con:endpoint>http://localhost:9080/HelloService/HelloService</con:endpoint></con:endpoints><con:operation id="972b0de1-5d4c-4e5c-999d-49a70532c894" isOneWay="false" action="http://www.purplegreen.dk/HelloService/Hello" name="Hello" bindingOperationName="Hello" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="13500ab2-d0fc-4b84-b45d-48fe72e65c75" name="Homer"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9080/HelloService/HelloService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.purplegreen.dk/HelloService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <hel:Hello>\r
+         <id>1</id>\r
+      </hel:Hello>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.purplegreen.dk/HelloService/Hello"/><con:wsrmConfig version="1.2"/></con:call><con:call id="b90e4943-6549-4856-9a94-3ad6fe576d17" name="Stranger"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:9080/HelloService/HelloService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.purplegreen.dk/HelloService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <hel:Hello>\r
+         <id>99</id>\r
+      </hel:Hello>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.purplegreen.dk/HelloService/Hello"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:RestService" id="e8f4d79d-779a-46d4-8158-e599d4783451" wadlVersion="http://wadl.dev.java.net/2009/02" name="HelloServiceREST" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://localhost:9080</con:endpoint></con:endpoints><con:resource name="1" path="/HelloService/rest/hello/1" id="2649ff32-2351-49b4-bf4b-6d2de8d13353"><con:settings/><con:parameters/><con:method name="Message" id="257c8f29-06a1-469d-830b-bf335aa2537c" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ns="http://localhost/HelloService/rest/hello/1">ns:Response</con:element></con:representation><con:request name="Homer" id="bdb54dfe-998d-4888-8d88-7deef1d01703" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9080</con:endpoint><con:request/><con:originalUri>http://localhost/HelloService/rest/hello/1</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="99" path="/HelloService/rest/hello/99" id="6b5a560c-25b1-46bb-a9a8-44ae8295da1a"><con:settings/><con:parameters/><con:method name="Message" id="71e9f091-0070-4a5d-83e5-692de2e34537" method="GET"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:ns="http://localhost/HelloService/rest/hello/99">ns:Response</con:element></con:representation><con:request name="Stranger" id="fe905f12-9238-4125-8d1f-ee3125d245f8" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9080</con:endpoint><con:request/><con:originalUri>http://localhost/HelloService/rest/hello/99</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:testSuite id="57715e29-bed6-419a-afa7-03c9f3a41d8c" name="HelloServiceSOAP TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="245d34f6-d2bd-4c1a-969b-6a0f561b9000" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Hello TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="77d90e2e-5c0c-4018-8254-ad6860756c03" name="Hello - Homer"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HelloServiceSOAP</con:interface><con:operation>Hello</con:operation><con:request name="Hello - Homer" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="609312d6-f4a8-4011-9dfb-0a9b2413b777"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#TestSuite#endpoint}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.purplegreen.dk/HelloService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:Hello>
+         <id>1</id>
+      </hel:Hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0d187ed6-47d9-43a3-b621-82617609aa17" name="SOAP Response"/><con:assertion type="Simple Contains" id="8af3f329-2986-471c-94dc-ca06a531d31f" name="Contains"><con:configuration><token>Hello, Homer!</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.purplegreen.dk/HelloService/Hello"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" id="2435a8bc-5300-4ebb-948b-728bc1e46dcb" name="Hello - Stranger"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>HelloServiceSOAP</con:interface><con:operation>Hello</con:operation><con:request name="Hello - Stranger" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="ad541dda-a56d-406a-954a-07df8178e4e1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>${#TestSuite#endpoint}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.purplegreen.dk/HelloService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:Hello>
+         <id>99</id>
+      </hel:Hello>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6db578c7-62a1-4ae6-ba79-2e3b6b49172e" name="SOAP Response"/><con:assertion type="Simple Contains" id="993ae841-1c24-4ef6-8622-81c906440b17" name="Contains"><con:configuration><token>Hello, Stranger!</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.purplegreen.dk/HelloService/Hello"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties><con:property><con:name>endpoint</con:name><con:value>http://localhost:9080/HelloService/HelloService</con:value></con:property></con:properties></con:testSuite><con:testSuite id="933ae7bf-6b11-4076-843a-252c2d0f2156" name="HelloServiceREST TestSuite"><con:description>TestSuite generated for REST Service [HelloServiceREST]</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="7da0d1ef-2364-4615-b459-0c5acf124a4f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="1 TestCase" searchProperties="true"><con:description>TestCase generated for REST Resource [1] located at [/HelloService/rest/hello/1]</con:description><con:settings/><con:testStep type="restrequest" name="Homer" id="4e093e09-7e4c-49e2-8316-55def8f3dd0f"><con:settings/><con:config service="HelloServiceREST" resourcePath="/HelloService/rest/hello/1" methodName="Message" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Homer" id="bdb54dfe-998d-4888-8d88-7deef1d01703" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9080</con:endpoint><con:request/><con:originalUri>http://localhost/HelloService/rest/hello/1</con:originalUri><con:assertion type="Simple Contains" id="e9858d81-2b1c-47d7-88e3-0e86fecccc3c" name="Contains"><con:configuration><token>Hello, Homer!</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="8a4d474c-2684-4cd2-975e-8fc89f249c67" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="99 TestCase" searchProperties="true"><con:description>TestCase generated for REST Resource [99] located at [/HelloService/rest/hello/99]</con:description><con:settings/><con:testStep type="restrequest" name="Stranger" id="f866222f-5143-4534-8a70-23549b09cdc7"><con:settings/><con:config service="HelloServiceREST" resourcePath="/HelloService/rest/hello/99" methodName="Message" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:restRequest name="Stranger" id="fe905f12-9238-4125-8d1f-ee3125d245f8" mediaType="application/json"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:9080</con:endpoint><con:request/><con:originalUri>http://localhost/HelloService/rest/hello/99</con:originalUri><con:assertion type="Simple Contains" id="4c94194b-2faa-4afb-aa4e-44636de737ca" name="Contains"><con:configuration><token>Hello, Stranger!</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:restRequest></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService id="395be408-dd98-4dcd-87ec-dda6713a97e2" port="8088" path="/HelloService" host="localhost" name="HelloService MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="Hello" id="5eddddbd-5778-4e3f-9f11-78433a7bcab6" interface="HelloServiceSOAP" operation="Hello"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response" id="ca2cfa40-64f6-476b-a3b2-6602bd9c42ab" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:script>def holder = new com.eviware.soapui.support.XmlHolder( mockRequest.requestContent )
+def id = holder["//id"] 
+if(id == "1")
+	requestContext.name =  "Homer"
+else
+	requestContext.name =  "Stranger"</con:script><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:hel="http://www.purplegreen.dk/HelloService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <hel:HelloResponse>
+         <message>Hello, ${name}!</message>
+      </hel:HelloResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.purplegreen.dk/HelloService/Hello"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/></con:soapui-project>
