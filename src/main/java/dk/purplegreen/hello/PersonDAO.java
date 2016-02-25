@@ -14,17 +14,23 @@ public class PersonDAO {
 	EntityManager em;
 
 	public void save(Person person) {
-		em.persist(person);		
+		// If saving a previously persisted Person make sure it is in context
+		// (or a new Person will be created)
+		if (person.getId() != null && !em.contains(person)) {
+			person = em.merge(person);
+		} else {
+			em.persist(person);
+		}
 	}
 
 	public Person find(Integer id) {
 		return em.find(Person.class, id);
 	}
 
-	public void delete(Person person) {			
-		em.remove(find(person.getId()));		
+	public void delete(Person person) {
+		em.remove(find(person.getId()));
 	}
-	
+
 	public List<Person> getAllPersons() {
 		TypedQuery<Person> query = em.createNamedQuery("findAllPersons", Person.class);
 		return query.getResultList();

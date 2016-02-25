@@ -24,7 +24,7 @@ public class HelloServiceBean {
 		return dao.find(id);
 	}
 
-	public void createPerson(Person person) {
+	public void savePerson(Person person) {
 		dao.save(person);
 	}
 	

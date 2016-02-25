@@ -24,7 +24,7 @@ public class PersonController {
 	}
 
 	public String addPerson() {
-		helloService.createPerson(person);
+		helloService.savePerson(person);
 		return "index.xhtml";
 	}
 
