@@ -24,9 +24,9 @@ public class PersonREST {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response findPerson(@PathParam("id") String id) {
+	public Response findPerson(@PathParam("id") Integer id) {
 
-		Person p = hello.findPerson(Integer.valueOf(id));
+		Person p = hello.findPerson(id);
 		if (p != null) {
 			return Response.ok(p).build();
 		} else {
@@ -40,7 +40,7 @@ public class PersonREST {
 	public Response createPerson(Person person) {
 
 		person.setId(null);
-		hello.savePerson(person);
+		hello.createPerson(person);
 		return Response.ok(person).build();
 	}
 
@@ -48,29 +48,27 @@ public class PersonREST {
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updatePerson(@PathParam("id") String id, Person person) {
+	public Response updatePerson(@PathParam("id") Integer id, Person person) {
 
-		Person p = hello.findPerson(Integer.valueOf(id));
+		person.setId(id);
 
-		if (p != null) {
-			p.setName(person.getName());
-			hello.savePerson(p);
-			return Response.ok(p).build();
-		} else {
+		try {
+			hello.updatePerson(person);
+			return Response.ok(person).build();
+		} catch (PersonNotFoundException e) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 	}
 
 	@DELETE
 	@Path("/{id}")
-	public Response deletePerson(@PathParam("id") String id) {
-
-		Person p = hello.findPerson(Integer.valueOf(id));
-		if (p != null) {
-			hello.deletePerson(p);
-
+	public Response deletePerson(@PathParam("id") Integer id) {
+		try {
+			Person person = new Person();
+			person.setId(id);
+			hello.deletePerson(person);
 			return Response.ok().build();
-		} else {
+		} catch (PersonNotFoundException e) {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 	}

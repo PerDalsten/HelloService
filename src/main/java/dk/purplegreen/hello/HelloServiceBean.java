@@ -24,11 +24,26 @@ public class HelloServiceBean {
 		return dao.find(id);
 	}
 
-	public void savePerson(Person person) {
+	public void createPerson(Person person) {
+		person.setId(null);
 		dao.save(person);
 	}
-	
-	public void deletePerson(Person person) {
+
+	public void updatePerson(Person person) throws PersonNotFoundException {
+		Person p = findPerson(person.getId());
+		if (p == null) {
+			throw new PersonNotFoundException("Person with id " + person.getId() + " does not exist");
+		}
+
+		dao.save(person);
+	}
+
+	public void deletePerson(Person person) throws PersonNotFoundException {
+		Person p = findPerson(person.getId());
+		if (p == null) {
+			throw new PersonNotFoundException("Person with id " + person.getId() + " does not exist");
+		}
+
 		dao.delete(person);
 	}
 

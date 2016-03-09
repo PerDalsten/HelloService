@@ -14,12 +14,10 @@ public class PersonDAO {
 	EntityManager em;
 
 	public void save(Person person) {
-		// If saving a previously persisted Person make sure it is in context
-		// (or a new Person will be created)
-		if (person.getId() != null && !em.contains(person)) {
-			person = em.merge(person);
-		} else {
+		if (person.getId() == null) {
 			em.persist(person);
+		} else {
+			person = em.merge(person);
 		}
 	}
 
@@ -28,7 +26,7 @@ public class PersonDAO {
 	}
 
 	public void delete(Person person) {
-		em.remove(find(person.getId()));
+		em.remove(em.merge(person));
 	}
 
 	public List<Person> getAllPersons() {

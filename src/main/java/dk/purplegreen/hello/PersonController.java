@@ -24,7 +24,7 @@ public class PersonController {
 	}
 
 	public String addPerson() {
-		helloService.savePerson(person);
+		helloService.createPerson(person);
 		return "index.xhtml";
 	}
 
@@ -33,7 +33,12 @@ public class PersonController {
 	}
 	
 	public String deletePerson(Person p){		
-		helloService.deletePerson(p);		
+		try {
+			helloService.deletePerson(p);
+		} catch (PersonNotFoundException e) {
+			//XXX Return error page
+			e.printStackTrace();
+		}		
 		return "list.xhtml";
 	}
 	
