@@ -13,9 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.WebServiceRef;
 
-@WebServlet(urlPatterns = "/HelloServlet", initParams = @WebInitParam(name = "wsendpoint", value = "http://localhost:9080/HelloService/HelloService") )
+@WebServlet(urlPatterns = "/HelloServlet", initParams = @WebInitParam(name = "wsendpoint", value = "http://localhost:9080/HelloService/HelloService"))
 public class HelloServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = -4361499262267052630L;
+
+	@WebServiceRef(value = HelloService_Service.class)
+	private HelloService helloService;
 
 	public HelloServlet() {
 		super();
@@ -31,9 +35,7 @@ public class HelloServlet extends HttpServlet {
 		ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, config.getInitParameter("wsendpoint"));
 	}
 
-	@WebServiceRef(value = HelloService_Service.class)
-	private HelloService helloService;
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -44,7 +46,8 @@ public class HelloServlet extends HttpServlet {
 		response.getWriter().append("<html><head><title>HelloServlet</title></head><body><h1>")
 				.append(helloService.hello(id)).append("<h1></body>");
 	}
-	
+
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		throw new UnsupportedOperationException();

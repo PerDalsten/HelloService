@@ -5,8 +5,8 @@
 	<persistence-unit name="HelloService">
 		<jta-data-source>jdbc/HelloServiceDS</jta-data-source>
 		<class>dk.purplegreen.hello.Person</class>
-		<properties>
-			<property name="eclipselink.ddl-generation" value="create-tables" />
+		<properties>			
+			<property name="javax.persistence.schema-generation.database.action" value="create" />
 		</properties>
 	</persistence-unit>
 </persistence>

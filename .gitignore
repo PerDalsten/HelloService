@@ -14,3 +14,6 @@ logs
 .factorypath
 
 /.apt_generated/
+
+src/main/database/helloservicedb
+

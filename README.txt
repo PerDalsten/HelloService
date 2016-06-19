@@ -33,6 +33,19 @@ WLP Server config
 </server>
 
 
+Wildfly config
+==============
+
+Deploy derbyclient.jar as application.
+
+<datasource jta="true" jndi-name="java:/jdbc/HelloServiceDS" pool-name="HelloService" enabled="true" use-ccm="true">
+	<connection-url>jdbc:derby://localhost:1527/helloservicedb;create=true</connection-url>
+    <driver-class>org.apache.derby.jdbc.ClientDriver</driver-class>
+    <driver>derbyclient.jar</driver>
+</datasource>
+
+
+
 URL's
 =====
 

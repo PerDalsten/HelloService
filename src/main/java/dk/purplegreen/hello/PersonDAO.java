@@ -17,7 +17,7 @@ public class PersonDAO {
 		if (person.getId() == null) {
 			em.persist(person);
 		} else {
-			person = em.merge(person);
+			em.merge(person);
 		}
 	}
 
