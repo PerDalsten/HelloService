@@ -5,8 +5,10 @@
 	<persistence-unit name="HelloService">
 		<jta-data-source>jdbc/HelloServiceDS</jta-data-source>
 		<class>dk.purplegreen.hello.Person</class>
-		<properties>			
+		<properties>
+		    <!-- Temporarily enable to initialize the database table 			
 			<property name="javax.persistence.schema-generation.database.action" value="create" />
+			-->
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -1,7 +1,7 @@
 Project creation
 ================
 
-C:\Users\Per\Projects>mvn archetype:generate -DgroupId=dk.purplegreen.hello -DartifactId=HelloService -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+mvn archetype:generate -DgroupId=dk.purplegreen.hello -DartifactId=HelloService -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
 
 Fix pom.xml (add Java EE 7, fix Junit version, compiler level, etc.) and web.xml (Web app version) in text editor
 
