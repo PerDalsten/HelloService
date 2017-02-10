@@ -12,7 +12,6 @@ public class HelloServiceBean {
 	private PersonDAO dao;
 
 	public String sayHello(int id) {
-
 		Person person = findPerson(id);
 		if (person == null) {
 			return "Hello, Stranger!";
