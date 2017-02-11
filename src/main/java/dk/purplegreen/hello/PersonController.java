@@ -31,15 +31,9 @@ public class PersonController {
 	public List<Person> getPersonList() {
 		return helloService.getAllPersons();
 	}
-	
-	public String deletePerson(Person p){		
-		try {
-			helloService.deletePerson(p);
-		} catch (PersonNotFoundException e) {
-			//XXX Return error page
-			e.printStackTrace();
-		}		
+
+	public String deletePerson(Person p) throws PersonNotFoundException {
+		helloService.deletePerson(p);
 		return "list.xhtml";
 	}
-	
 }
