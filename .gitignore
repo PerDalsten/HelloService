@@ -17,3 +17,5 @@ logs
 
 src/main/database/helloservicedb
 
+/helloservicedb/
+/.tern-project
