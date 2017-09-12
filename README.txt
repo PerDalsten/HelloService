@@ -5,31 +5,33 @@ mvn archetype:generate -DgroupId=dk.purplegreen.hello -DartifactId=HelloService 
 
 Fix pom.xml (add Java EE 7, fix Junit version, compiler level, etc.) and web.xml (Web app version) in text editor
 
-Import Existing Maven Project (or alternatively mvn eclipse:eclipse and Open Existing Project?)
-
 
 WLP Server config
 =================
+
+./installUtility install jaxws-2.2 if running web profile instead of full WLP.
+
 
 <server description="WLP Used From Eclipse">
 
 	<!-- Enable features -->
 	<featureManager>
-		<feature>javaee-7.0</feature>
-		<feature>localConnector-1.0</feature>
-	</featureManager>
+        <feature>webProfile-7.0</feature>
+        <feature>jaxws-2.2</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
 	
 	<httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
 
 	<webApplication id="HelloService" location="HelloService.war" name="HelloService"/>
 
 	<library id="DerbyLib">
-		<fileset dir="C:\Development\jdk1.8\db\lib" includes="*.jar"/>
-	</library>
-	<dataSource jndiName="jdbc/HelloServiceDS">
-		<jdbcDriver libraryRef="DerbyLib"/>
-		<properties.derby.client createDatabase="create" databaseName="helloservicedb" password="{xor}KzosKw=="/>
-	</dataSource>	
+    	<fileset dir="lib/derby" includes="*.jar"/>
+    </library>
+    <dataSource jndiName="jdbc/HelloServiceDS">
+        <jdbcDriver libraryRef="DerbyLib"/>
+        <properties.derby.client createDatabase="create" databaseName="helloservicedb" user="helloservice" password="{xor}NzozMzAsOi0pNjw6"/>
+    </dataSource>
 </server>
 
 

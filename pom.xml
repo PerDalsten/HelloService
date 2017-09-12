@@ -4,7 +4,7 @@
 	<groupId>dk.purplegreen.hello</groupId>
 	<artifactId>HelloService</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>HelloService Maven Webapp</name>
 	<url>http://www.purplegreen.dk/hello</url>
 	<build>
