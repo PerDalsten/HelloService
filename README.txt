@@ -44,6 +44,10 @@ Deploy derbyclient.jar as application.
 	<connection-url>jdbc:derby://localhost:1527/helloservicedb;create=true</connection-url>
     <driver-class>org.apache.derby.jdbc.ClientDriver</driver-class>
     <driver>derbyclient.jar</driver>
+    <security>
+         <user-name>helloservice</user-name>
+         <password>helloservice</password>
+    </security>
 </datasource>
 
 
