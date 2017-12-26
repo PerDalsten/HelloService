@@ -29,13 +29,13 @@
 							<sourceRoot>${project.build.directory}/generated/ws</sourceRoot>
 							<wsdlOptions>
 								<wsdlOption>
-									<wsdl>${basedir}/src/main/resources/wsdl/HelloService.wsdl</wsdl>
+									<wsdl>${basedir}/src/main/resources/META-INF/wsdl/HelloService.wsdl</wsdl>									
 									<extraargs>
 										<extraarg>-p</extraarg>
 										<extraarg>dk.purplegreen.hello</extraarg>
 										<extraarg>-wsdlLocation</extraarg>
-										<extraarg>/wsdl/HelloService.wsdl</extraarg>
-									</extraargs>
+										<extraarg>http://www.purplegreen.dk/HelloService/HelloService.wsdl</extraarg>
+									</extraargs>									 
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>

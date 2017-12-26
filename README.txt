@@ -24,6 +24,8 @@ WLP Server config
 	<httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
 
 	<webApplication id="HelloService" location="HelloService.war" name="HelloService"/>
+	
+	<jndiEntry value="http://localhost:9080/HelloService/HelloService" jndiName="helloservice/endpoint"></jndiEntry>
 
 	<library id="DerbyLib">
     	<fileset dir="lib/derby" includes="*.jar"/>
@@ -49,6 +51,16 @@ Deploy derbyclient.jar as application.
          <password>helloservice</password>
     </security>
 </datasource>
+
+
+Add WS URL:
+
+<subsystem xmlns="urn:jboss:domain:naming:2.0">
+  <bindings>
+     <simple name="java:/helloservice/endpoint" value="http://localhost:8080/HelloService/HelloService" type="java.lang.String" />
+  </bindings>
+</subsystem>
+
 
 
 

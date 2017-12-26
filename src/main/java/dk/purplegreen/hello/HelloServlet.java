@@ -3,9 +3,9 @@ package dk.purplegreen.hello;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.BindingProvider;
 import javax.xml.ws.WebServiceRef;
 
-@WebServlet(urlPatterns = "/HelloServlet", initParams = @WebInitParam(name = "wsendpoint", value = "http://localhost:9080/HelloService/HelloService"))
+@WebServlet(urlPatterns = "/HelloServlet")
 public class HelloServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -4361499262267052630L;
 
 	@WebServiceRef(value = HelloService_Service.class)
 	private HelloService helloService;
+	
+	@Resource(lookup="helloservice/endpoint")
+	private String helloServiceEndpoint;
 
 	public HelloServlet() {
 		super();
@@ -27,12 +30,12 @@ public class HelloServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-
+		
 		super.init(config);
 
 		Map<String, Object> ctx = ((BindingProvider) helloService).getRequestContext();
 
-		ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, config.getInitParameter("wsendpoint"));
+		ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, helloServiceEndpoint);
 	}
 
 	@Override
