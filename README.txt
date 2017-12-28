@@ -61,6 +61,14 @@ Add WS URL:
   </bindings>
 </subsystem>
 
+or run scripts in src/main/scripts/wildfly as needed e.g.
+
+
+cd $JAVA_HOME/db/lib; /path/to/jboss-cli.sh --file=/path/to/create-derby-database-driver.cli 
+
+/path/to/jboss-cli.sh --file=/path/to/create-derby-datasource.cli
+
+/path/to/jboss-cli.sh --file=/path/to/create-jndi-entry.cli
 
 
 
