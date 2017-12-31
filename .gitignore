@@ -19,3 +19,4 @@ src/main/database/helloservicedb
 
 /helloservicedb/
 /.tern-project
+/HelloServiceDB.launch
