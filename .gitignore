@@ -1,6 +1,10 @@
 .settings
 
 target
+build
+bin
+
+.gradle
 
 data
 
@@ -23,3 +27,4 @@ src/main/database/helloservicedb
 
 *.iml
 .idea
+

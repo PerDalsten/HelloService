@@ -1,0 +1,30 @@
+plugins {
+  id "no.nils.wsdl2java" version "0.10"
+}
+
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile "javax:javaee-api:7.0"
+    testCompile "junit:junit:4.12"
+    testCompile "org.mockito:mockito-core:2.7.4"
+}
+
+wsdl2java{
+    wsdlsToGenerate = [
+            ['-p','dk.purplegreen.hello', '-wsdlLocation','http://www.purplegreen.dk/HelloService/HelloService.wsdl',"$projectDir/src/main/resources/META-INF/wsdl/HelloService.wsdl"]
+    ]
+    generatedWsdlDir = file("$buildDir/generatedsources")
+    wsdlDir = file("$projectDir/src/main/resources/META-INF/wsdl")
+}
+
+wsdl2javaExt {
+    cxfVersion = "3.1.4"
+}
+
