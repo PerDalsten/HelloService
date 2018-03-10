@@ -71,6 +71,22 @@ cd $JAVA_HOME/db/lib; /path/to/jboss-cli.sh --file=/path/to/create-derby-databas
 /path/to/jboss-cli.sh --file=/path/to/create-jndi-entry.cli
 
 
+Glassfish config
+================
+
+Glassfish already contains Derby/JavaDB.
+
+Create datasource:
+
+./asadmin create-jdbc-connection-pool --restype javax.sql.DataSource --datasourceclassname org.apache.derby.jdbc.ClientDataSource --property "ServerName=localhost:PortNumber=1527:DatabaseName=helloservicedb:User=helloservice:Password=helloservice:ConnectionAttributes=;create\=false" HelloService 
+
+./asadmin create-jdbc-resource --connectionpoolid HelloService jdbc/HelloServiceDS
+
+Create JNDI entry:
+
+./asadmin create-custom-resource --restype=java.lang.String --factoryclass=org.glassfish.resources.custom.factory.PrimitivesAndStringFactory --property "value=http\://localhost\:8080/HelloService/HelloService" helloservice/endpoint 
+
+
 
 URL's
 =====
