@@ -11,6 +11,7 @@ WLP Server config
 
 ./installUtility install jaxws-2.2 if running web profile instead of full WLP.
 
+Copy derbyclient.jar to lib/derby (create) directory in server.
 
 <server description="WLP Used From Eclipse">
 
@@ -64,7 +65,7 @@ Add WS URL:
 or run scripts in src/main/scripts/wildfly as needed e.g.
 
 
-cd $JAVA_HOME/db/lib; /path/to/jboss-cli.sh --file=/path/to/create-derby-database-driver.cli 
+cd $DERBY_HOME/lib; /path/to/jboss-cli.sh --file=/path/to/create-derby-database-driver.cli 
 
 /path/to/jboss-cli.sh --file=/path/to/create-derby-datasource.cli
 
